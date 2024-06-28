@@ -43,21 +43,20 @@ nav a:hover {
 #list-tasks .task {
 	background: grey;
 	margin: 0.75em 0;
+	padding: 0 0.7em 0.7em;
 }
 #list-tasks .task.checked { background: green; }
 #list-tasks .task > div:first-child {
 	display: flex;
 	align-items: center;
-	padding: 0 .7em;
 }
+#list-tasks .task * { color: #eee; }
 #list-tasks h3 {
-	color: #ddd;
 	flex: 1;
 	margin: 0.5em 0;
 }
 #list-tasks .task a {
 	background: #666;
-	color: #eee;
 	border: 1px solid #999;
 	border-radius: 4px;
 	margin: 0 2px; padding: 4px;

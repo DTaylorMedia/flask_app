@@ -20,7 +20,6 @@
 				<a href="/update/{{todo.id}}">Mark as Uncomplete</a>
 				<a class="del" href="/delete/{{todo.id}}">Delete Task</a>
 			</div>
-		</div>
 		{% else %}
 		<div class="task">
 			<div>
@@ -28,8 +27,14 @@
 				<a href="/update/{{todo.id}}">Mark as Complete</a>
 				<a class="del" href="/delete/{{todo.id}}">Delete Task</a>
 			</div>
-		</div>
 		{% endif %}
+			<div>
+				{% if todo.date_modified > todo.date_created %}
+				<div>Date Modified: {{ todo.date_modified.strftime('%d %b %y @ %H:%M:%S') }}</div>
+				{% endif %}
+				<div>Date Created: {{ todo.date_created.strftime('%d %b %y @ %H:%M:%S') }}</div>
+			</div>
+		</div>
 	{% endfor %}
 	</div>
 {% endblock %}
