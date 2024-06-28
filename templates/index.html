@@ -1,25 +1,35 @@
 {% extends 'base.html' %}
 {% block content %}
-	<h1>To Do List</h1>
-	<form action="/add" method="post">
-		<div>
-			<label>Todo task</label>
-			<input type="text" name="task" placeholder="Enter a Task">
-			<button type="submit">Add a Task</button>
-		</div>
-	</form>
-	<hr>
+	<!-- FORM -->
+	<div>
+		<h1>To Do List</h1>
+		<form action="/add" method="post">
+			<div>
+				<label>Todo task <input type="text" name="task" placeholder="Enter a Task"></label>
+				<button type="submit">Add Task</button>
+			</div>
+		</form>
+	</div>
+	<!-- TASKS -->
+	<div id="list-tasks">
 	{% for todo in todo_list %}
-	<p>
-		<div>{{ todo.id }} : {{ todo.task }}</div>
-		<div>
-		{% if todo.complete==False %}
-			Task incomplete. <a href="/update/{{todo.id}}">Mark as complete?</a>
-		{% else %}
-			Task complete!
-		{% endif %}
+		{% if todo.complete %}
+		<div class="task checked">
+			<div>
+				<h3>{{ todo.id }} - {{ todo.task }}</h3>
+				<a href="/update/{{todo.id}}">Mark as Uncomplete</a>
+				<a class="del" href="/delete/{{todo.id}}">Delete Task</a>
+			</div>
 		</div>
-		<div><a href="/delete/{{todo.id}}">Delete task</a></div>
-	</p>
+		{% else %}
+		<div class="task">
+			<div>
+				<h3>{{ todo.id }} - {{ todo.task }}</h3>
+				<a href="/update/{{todo.id}}">Mark as Complete</a>
+				<a class="del" href="/delete/{{todo.id}}">Delete Task</a>
+			</div>
+		</div>
+		{% endif %}
 	{% endfor %}
+	</div>
 {% endblock %}
